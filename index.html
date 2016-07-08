@@ -24,7 +24,14 @@
 
 		<div class="container" role="content">
 			<div class="starter-template">
-				<h1>Level {{selectedSpell.level}}</h1>
+				<h1>{{selectedSpell.name}}</h1>
+				<h2>Level {{selectedSpell.level}} spell</h2>
+				<h5>Components: {{selectedSpell.components}}</h5>
+				<h5>Range: {{selectedSpell.range}}</h5>
+				<h5>Duration: {{selectedSpell.duration}}</h5>
+				<h5>School: {{selectedSpell.school}}</53>
+				<h5>Casting time: {{selectedSpell.casting_time}}</h5>
+				<p>{{selectedSpell.description}}</p>
 			</div>
 		</div>
 	</body>

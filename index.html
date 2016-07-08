@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>Dungeons and Dragons 5th Edition Spell List</title>
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css"></link>
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.css"></link>
+    <script type="text/javascript" src="lib/angular-1.3.13/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-1.3.13/angular-route.min.js"></script>
+    <script type="text/javascript" src="app/spells.js"></script>
+	</head>
+	<body ng-app="spell" ng-controller="SpellController">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="#">Spells</a>
+          <div class="nav-collapse collapse">
+            <div class="navbar-text pull-right">
+							<select ng-model="selectedSpell" ng-options="spell.name for spell in spells"> </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+		<div class="container" role="content">
+			<div class="starter-template">
+				<h1>Level {{selectedSpell.level}}</h1>
+			</div>
+		</div>
+	</body>
+</html>

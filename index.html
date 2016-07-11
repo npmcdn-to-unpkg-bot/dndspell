@@ -10,27 +10,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body ng-app="spell" ng-controller="SpellController">
-    <div class="container">
-			<nav class="navbar navbar-inverse navbar-fixed-top">
-				<div class="container">
-					<div class="navbar-header">
-						<a class="navbar-brand" href="#">Spells</a>
-						<div class="dropdown navbar-form pull-right">
-							<select ng-model="selectedSpell" ng-options="spell.name for spell in spells"> </select>
-						</div>
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+					<a class="navbar-brand" href="#">Spells</a>
+					<div class="pull-right navbar-form navbar-right">
+						<select class="form-control" ng-model="selectedSpell" ng-options="spell.name for spell in spells"> </select>
 					</div>
-				</div>
-			</nav>
-			<div class="starter-template">
-				<h1>{{selectedSpell.name}}</h1>
-				<h2>Level {{selectedSpell.level}} spell</h2>
-				<h5>Components: {{selectedSpell.components}}</h5>
-				<h5>Range: {{selectedSpell.range}}</h5>
-				<h5>Duration: {{selectedSpell.duration}}</h5>
-				<h5>School: {{selectedSpell.school}}</53>
-				<h5>Casting time: {{selectedSpell.casting_time}}</h5>
-				<p>{{selectedSpell.description}}</p>
 			</div>
+		</nav>
+
+		<div class="page-header"></div>
+		
+		<div class="container-fluid">
+			<h1>{{selectedSpell.name}}</h1>
+			<h2>Level {{selectedSpell.level}} spell</h2>
+			<h5>Components: {{selectedSpell.components}}</h5>
+			<h5>Range: {{selectedSpell.range}}</h5>
+			<h5>Duration: {{selectedSpell.duration}}</h5>
+			<h5>School: {{selectedSpell.school}}</53>
+			<h5>Casting time: {{selectedSpell.casting_time}}</h5>
+			<p>{{selectedSpell.description}}</p>
 
 			Thanks to <a href="https://github.com/tadzik">tadzik</a> for providing the spell JSON data, found in <a href="https://github.com/tadzik/5e-spells">this repo</a>
 		</div>

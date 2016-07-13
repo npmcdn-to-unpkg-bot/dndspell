@@ -15,7 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script type="text/javascript">
 			$(document).ready(function() {
-				$(".js-example-basic-single").select2();
+				$(".js-example-basic-single").select2({
+					width: '200px'
+				});
 			});
 		</script>
 	</head>
@@ -24,7 +26,7 @@
 			<div class="container-fluid">
 					<a class="navbar-brand" href="#">Spells</a>
 					<div class="pull-right navbar-form">
-						<select style="width: 100%;" class="js-example-basic-single" ng-model="selectedSpell" ng-options="spell.name for spell in spells"> </select>
+						<select class="js-example-basic-single input-medium" ng-model="selectedSpell" ng-options="spell.name for spell in spells"> </select>
 				</div>
 			</div>
 		</nav>

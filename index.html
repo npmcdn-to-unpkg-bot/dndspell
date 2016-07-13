@@ -33,17 +33,22 @@
 
 		<div class="page-header"></div>
 		
-		<div class="container-fluid">
-			<h1>{{selectedSpell.name}}</h1>
-			<h2>Level {{selectedSpell.level}} spell</h2>
-			<h5>Components: {{selectedSpell.components}}</h5>
-			<h5>Range: {{selectedSpell.range}}</h5>
-			<h5>Duration: {{selectedSpell.duration}}</h5>
-			<h5>School: {{selectedSpell.school}}</53>
-			<h5>Casting time: {{selectedSpell.casting_time}}</h5>
-			<p>{{selectedSpell.description}}</p>
-
-			Thanks to <a href="https://github.com/tadzik">tadzik</a> for providing the spell JSON data, found in <a href="https://github.com/tadzik/5e-spells">this repo</a>
+		<div class="container">
+			<div class="jumbotron">
+				<h1>{{selectedSpell.name}}</h1>
+				<h2>Level {{selectedSpell.level}} spell</h2>
+				<h5>Components: {{selectedSpell.components}}</h5>
+				<h5>Range: {{selectedSpell.range}}</h5>
+				<h5>Duration: {{selectedSpell.duration}}</h5>
+				<h5>School: {{selectedSpell.school}}</53>
+				<h5>Casting time: {{selectedSpell.casting_time}}</h5>
+				<p>{{selectedSpell.description}}</p>
+			</div>
+			<hr/>
+			<footer>
+				<p>Thanks to <a href="https://github.com/tadzik">tadzik</a> for providing the spell JSON data, found in <a href="https://github.com/tadzik/5e-spells">this repo</a>.</p>
+				<p>Code for this website can be found <a href="https://github.com/chriszimmerman/dndspell">here</a>.</p>
+			<footer>
 		</div>
 	</body>
 </html>

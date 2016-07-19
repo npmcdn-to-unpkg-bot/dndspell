@@ -49,17 +49,28 @@
 			</div>
 
 			<h1>Favorites!!</h1>
-			<div ng-repeat="favorite in savedSpells">
-				<div class="jumbotron">
-					<input type="submit" class="btn btn-warning" ng-click="removeSpell(favorite.name)" ng-show="isSpellSaved(favorite.name)" value="Remove from favorites" />
-					<h1>{{favorite.name}}</h1>
-					<h2>Level {{favorite.level}} spell</h2>
-					<h5>Components: {{favorite.components}}</h5>
-					<h5>Range: {{favorite.range}}</h5>
-					<h5>Duration: {{favorite.duration}}</h5>
-					<h5>School: {{favorite.school}}</53>
-					<h5>Casting time: {{favorite.casting_time}}</h5>
-					<p>{{favorite.description}}</p>
+			<div role="tablist" id="favs" ng-repeat="favorite in savedSpells">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="heading-{{$index}}">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#favs" href="#collapse-{{$index}}" aria-expanded="false" aria-controls="collapse-{{$index}}">
+								{{favorite.name}}
+							</a>
+						</h4>
+						<input type="submit" class="btn btn-warning navbar-right" ng-click="removeSpell(favorite.name)" ng-show="isSpellSaved(favorite.name)" value="Remove" />
+					</div>
+					<div id="collapse-{{$index}}" class="panel-collapse collapse" aria-labelledby="heading-{{$index}}" aria-expanded="false">
+						<div class="panel-body">
+							<h1>{{favorite.name}}</h1>
+							<h2>Level {{favorite.level}} spell</h2>
+							<h5>Components: {{favorite.components}}</h5>
+							<h5>Range: {{favorite.range}}</h5>
+							<h5>Duration: {{favorite.duration}}</h5>
+							<h5>School: {{favorite.school}}</53>
+							<h5>Casting time: {{favorite.casting_time}}</h5>
+							<p>{{favorite.description}}</p>
+						</div>
+					</div>
 				</div>
 			</div>
 			<hr/>

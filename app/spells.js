@@ -36,6 +36,10 @@ spellApp.controller('SpellController', function($scope, $http){
 			return false;
 		};
 
+		$scope.areSpellsSaved = function(){
+			return $scope.savedSpells.length > 0;
+		};
+
 		$scope.clearSavedSpells = function(){
 			localStorage.clear();
 			$scope.savedSpells = [];

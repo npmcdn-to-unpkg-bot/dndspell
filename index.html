@@ -16,7 +16,7 @@
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$(".js-example-basic-single").select2({
-					width: '200px'
+					width: '150px'
 				});
 			});
 		</script>
@@ -24,7 +24,7 @@
 	<body ng-app="spell" ng-controller="SpellController">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="#spells">Spells</a>
+				<a class="navbar-brand" href="#">Spells</a>
 				<div class="pull-right navbar-form">
 					<select class="js-example-basic-single input-medium" ng-model="selectedSpell" ng-options="spell.name for spell in spells"> </select>
 				</div>
@@ -35,9 +35,9 @@
 		
 		<div class="container">
 			<div class="jumbotron">
-				<input type="submit" ng-click="saveSpell()" ng-show="!isSpellSaved(selectedSpell.name)" value="Save to favorites" />
-				<input type="submit" ng-click="removeSpell(selectedSpell.name)" ng-show="isSpellSaved(selectedSpell.name)" value="Remove from favorites" />
-				<input type="submit" ng-click="clearSavedSpells()" value="Clear favorites" />
+				<input type="submit" class="btn btn-success" ng-click="saveSpell()" ng-show="!isSpellSaved(selectedSpell.name)" value="Save to favorites" />
+				<input type="submit" class="btn btn-warning" ng-click="removeSpell(selectedSpell.name)" ng-show="isSpellSaved(selectedSpell.name)" value="Remove from favorites" />
+				<input type="submit" class="btn btn-danger" ng-click="clearSavedSpells()" ng-show="areSpellsSaved()"value="Clear favorites" />
 				<h1>{{selectedSpell.name}}</h1>
 				<h2>Level {{selectedSpell.level}} spell</h2>
 				<h5>Components: {{selectedSpell.components}}</h5>
@@ -48,20 +48,18 @@
 				<p>{{selectedSpell.description}}</p>
 			</div>
 
-			<div class="container">
-				<h1>Favorites!!</h1>
-				<div ng-repeat="favorite in savedSpells">
-					<div class="jumbotron">
-						<input type="submit" ng-click="removeSpell(favorite.name)" ng-show="isSpellSaved(favorite.name)" value="Remove from favorites" />
-						<h1>{{favorite.name}}</h1>
-						<h2>Level {{favorite.level}} spell</h2>
-						<h5>Components: {{favorite.components}}</h5>
-						<h5>Range: {{favorite.range}}</h5>
-						<h5>Duration: {{favorite.duration}}</h5>
-						<h5>School: {{favorite.school}}</53>
-						<h5>Casting time: {{favorite.casting_time}}</h5>
-						<p>{{favorite.description}}</p>
-					</div>
+			<h1>Favorites!!</h1>
+			<div ng-repeat="favorite in savedSpells">
+				<div class="jumbotron">
+					<input type="submit" class="btn btn-warning" ng-click="removeSpell(favorite.name)" ng-show="isSpellSaved(favorite.name)" value="Remove from favorites" />
+					<h1>{{favorite.name}}</h1>
+					<h2>Level {{favorite.level}} spell</h2>
+					<h5>Components: {{favorite.components}}</h5>
+					<h5>Range: {{favorite.range}}</h5>
+					<h5>Duration: {{favorite.duration}}</h5>
+					<h5>School: {{favorite.school}}</53>
+					<h5>Casting time: {{favorite.casting_time}}</h5>
+					<p>{{favorite.description}}</p>
 				</div>
 			</div>
 			<hr/>

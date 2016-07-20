@@ -51,13 +51,17 @@
 			<h1>Favorites!!</h1>
 			<div role="tablist" id="favs" ng-repeat="favorite in savedSpells">
 				<div class="panel panel-default">
-					<div class="panel-heading" role="tab" id="heading-{{$index}}">
-						<h4 class="panel-title">
-							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#favs" href="#collapse-{{$index}}" aria-expanded="false" aria-controls="collapse-{{$index}}">
-								{{favorite.name}}
-							</a>
-						</h4>
-						<input type="submit" class="btn btn-warning navbar-right" ng-click="removeSpell(favorite.name)" ng-show="isSpellSaved(favorite.name)" value="Unfavorite" />
+					<div class="panel-heading clearfix" role="tab" id="heading-{{$index}}">
+						<div class="col-xs-6">
+							<h4 class="panel-title navbar-left">
+								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#favs" href="#collapse-{{$index}}" aria-expanded="false" aria-controls="collapse-{{$index}}">
+									{{favorite.name}}
+								</a>
+							</h4>
+						</div>
+						<div class="col-xs-6">
+							<input type="submit" class="btn btn-warning navbar-right" ng-click="removeSpell(favorite.name)" ng-show="isSpellSaved(favorite.name)" value="Unfavorite" />
+						</div>
 					</div>
 					<div id="collapse-{{$index}}" class="panel-collapse collapse" aria-labelledby="heading-{{$index}}" aria-expanded="false">
 						<div class="panel-body">

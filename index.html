@@ -12,6 +12,7 @@
     <script type="text/javascript" src="lib/angular-1.5.7/angular-route.min.js"></script>
     <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="app/spells.js"></script>
+    <script type="text/javascript" src="app/custom.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -24,7 +25,8 @@
 	<body ng-app="spell" ng-controller="SpellController">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container">
-				<a class="navbar-brand" href="#">Spells</a>
+				<a class="navbar-brand same-page-nav" href="#home">Spells</a>
+				<a class="navbar-brand same-page-nav" href="#favorites">Favorites</a>
 				<div class="pull-right navbar-form">
 					<select class="js-example-basic-single input-medium" ng-model="selectedSpell" ng-options="spell.name for spell in spells"> </select>
 				</div>
@@ -34,7 +36,7 @@
 		<div class="page-header"></div>
 		
 		<div class="container">
-			<div class="jumbotron">
+			<div class="starter-template" id="home">
 				<input type="submit" class="btn btn-success" ng-click="saveSpell()" ng-show="!isSpellSaved(selectedSpell.name)" value="Favorite" />
 				<input type="submit" class="btn btn-warning" ng-click="removeSpell(selectedSpell.name)" ng-show="isSpellSaved(selectedSpell.name)" value="Unfavorite" />
 				<input type="submit" class="btn btn-danger" ng-click="clearSavedSpells()" ng-show="areSpellsSaved()"value="Clear favorites" />
@@ -48,31 +50,33 @@
 				<p>{{selectedSpell.description}}</p>
 			</div>
 
-			<h1>Favorites!!</h1>
-			<div role="tablist" id="favs" ng-repeat="favorite in savedSpells">
-				<div class="panel panel-default">
-					<div class="panel-heading clearfix" role="tab" id="heading-{{$index}}">
-						<div class="col-xs-6">
-							<h4 class="panel-title navbar-left">
-								<a class="collapsed" role="button" data-toggle="collapse" data-parent="#favs" href="#collapse-{{$index}}" aria-expanded="false" aria-controls="collapse-{{$index}}">
-									{{favorite.name}}
-								</a>
-							</h4>
+			<div class="starter-template" id="favorites">
+				<h1>Favorites!!</h1>
+				<div role="tablist" id="favs" ng-repeat="favorite in savedSpells">
+					<div class="panel panel-default">
+						<div class="panel-heading clearfix" role="tab" id="heading-{{$index}}">
+							<div class="col-xs-6">
+								<h4 class="panel-title navbar-left">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#favs" href="#collapse-{{$index}}" aria-expanded="false" aria-controls="collapse-{{$index}}">
+										{{favorite.name}}
+									</a>
+								</h4>
+							</div>
+							<div class="col-xs-6">
+								<input type="submit" class="btn btn-warning navbar-right" ng-click="removeSpell(favorite.name)" ng-show="isSpellSaved(favorite.name)" value="Unfavorite" />
+							</div>
 						</div>
-						<div class="col-xs-6">
-							<input type="submit" class="btn btn-warning navbar-right" ng-click="removeSpell(favorite.name)" ng-show="isSpellSaved(favorite.name)" value="Unfavorite" />
-						</div>
-					</div>
-					<div id="collapse-{{$index}}" class="panel-collapse collapse" aria-labelledby="heading-{{$index}}" aria-expanded="false">
-						<div class="panel-body">
-							<h1>{{favorite.name}}</h1>
-							<h2>Level {{favorite.level}} spell</h2>
-							<h5>Components: {{favorite.components}}</h5>
-							<h5>Range: {{favorite.range}}</h5>
-							<h5>Duration: {{favorite.duration}}</h5>
-							<h5>School: {{favorite.school}}</53>
-							<h5>Casting time: {{favorite.casting_time}}</h5>
-							<p>{{favorite.description}}</p>
+						<div id="collapse-{{$index}}" class="panel-collapse collapse" aria-labelledby="heading-{{$index}}" aria-expanded="false">
+							<div class="panel-body">
+								<h1>{{favorite.name}}</h1>
+								<h2>Level {{favorite.level}} spell</h2>
+								<h5>Components: {{favorite.components}}</h5>
+								<h5>Range: {{favorite.range}}</h5>
+								<h5>Duration: {{favorite.duration}}</h5>
+								<h5>School: {{favorite.school}}</53>
+								<h5>Casting time: {{favorite.casting_time}}</h5>
+								<p>{{favorite.description}}</p>
+							</div>
 						</div>
 					</div>
 				</div>

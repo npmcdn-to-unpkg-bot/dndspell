@@ -35,12 +35,14 @@
 		
 		<div class="container">
 			<div class="jumbotron starter-template" id="home">
-				<div class="pull-right">
+				<div class="control-group" style="margin-bottom:10px;">
 					<select class="js-example-basic-single input-medium dropdown-menu-right" ng-model="selectedSpell" ng-options="spell.name for spell in spells"> </select>
 				</div>
-				<input type="submit" class="btn btn-success" ng-click="saveSpell()" ng-show="!isSpellSaved(selectedSpell.name)" value="Favorite" />
-				<input type="submit" class="btn btn-warning" ng-click="removeSpell(selectedSpell.name)" ng-show="isSpellSaved(selectedSpell.name)" value="Unfavorite" />
-				<input type="submit" class="btn btn-danger" ng-click="clearSavedSpells()" ng-show="areSpellsSaved()"value="Clear favorites" />
+				<div class="control-group">
+					<input type="submit" class="btn btn-success" ng-click="saveSpell()" ng-show="!isSpellSaved(selectedSpell.name)" value="Favorite" />
+					<input type="submit" class="btn btn-warning" ng-click="removeSpell(selectedSpell.name)" ng-show="isSpellSaved(selectedSpell.name)" value="Unfavorite" />
+					<input type="submit" class="btn btn-danger" ng-click="clearSavedSpells()" ng-show="areSpellsSaved()"value="Clear favorites" />
+				</div>
 				<h1>{{selectedSpell.name}}</h1>
 				<h2>Level {{selectedSpell.level}} spell</h2>
 				<h5>Components: {{selectedSpell.components}}</h5>

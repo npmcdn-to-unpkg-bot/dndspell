@@ -2,33 +2,50 @@ var spellApp = angular.module('spell', []);
 
 spellApp.controller('SpellController', function($scope, $http){
     $scope.spells = [];
-    $scope.saved = localStorage.getItem('spells');
-    $scope.savedSpells = (localStorage.getItem('spells') !== null)
-    											? JSON.parse($scope.saved)
+
+    $http.get('data/spells.json')
+        .success(function(results){
+        		var spells = [];
+
+        		for(var spell in results){
+							var jsonObject = results[spell];
+							jsonObject.name = spell;
+							spells.push(jsonObject)
+						}
+
+            $scope.spells = spells;
+						$scope.selectedSpell = $scope.spells[0];
+        })
+		.error(function(){
+			alert('Error loading the JSON file containing the spells.');	
+		});
+
+    $scope.favoriteSpells = (localStorage.getItem('spells') !== null)
+    											? JSON.parse(localStorage.getItem('spells'))
     											: [];
 
     $scope.saveSpell = function(){
-			$scope.savedSpells.push($scope.selectedSpell);
-			localStorage.setItem('spells', JSON.stringify($scope.savedSpells));
+			$scope.favoriteSpells.push($scope.selectedSpell);
+			localStorage.setItem('spells', JSON.stringify($scope.favoriteSpells));
 		};
 
     $scope.removeSpell = function(spellName){
     	var index = -1;
-    	for(var i = 0; i < $scope.savedSpells.length; i++){
-    		if($scope.savedSpells[i].name === spellName){
+    	for(var i = 0; i < $scope.favoriteSpells.length; i++){
+    		if($scope.favoriteSpells[i].name === spellName){
 					index = i;
 				}
 			}
 			
 			if(index > -1) {
-				$scope.savedSpells.splice(index, 1);
-				localStorage.setItem('spells', JSON.stringify($scope.savedSpells));
+				$scope.favoriteSpells.splice(index, 1);
+				localStorage.setItem('spells', JSON.stringify($scope.favoriteSpells));
 			}
 		};
 
 		$scope.isSpellSaved = function(spellName){
-    	for(var i = 0; i < $scope.savedSpells.length; i++){
-    		if($scope.savedSpells[i].name === spellName){
+    	for(var i = 0; i < $scope.favoriteSpells.length; i++){
+    		if($scope.favoriteSpells[i].name === spellName){
     			return true;
 				}
 			}
@@ -37,29 +54,11 @@ spellApp.controller('SpellController', function($scope, $http){
 		};
 
 		$scope.areSpellsSaved = function(){
-			return $scope.savedSpells.length > 0;
+			return $scope.favoriteSpells.length > 0;
 		};
 
 		$scope.clearSavedSpells = function(){
 			localStorage.clear();
-			$scope.savedSpells = [];
+			$scope.favoriteSpells = [];
 		};
-
-    $http.get('data/spells.json')
-        .success(function(results){
-        		var array = [];
-
-        		for(var spell in results){
-							var obj = results[spell];
-							obj.name = spell;
-							array.push(obj)
-						}
-            $scope.spells = array;
-						$scope.selectedSpell = $scope.spells[0];
-						console.log($scope.savedSpells);
-        })
-		.error(function(){
-			alert('ruh roh');	
-		});
-
 });

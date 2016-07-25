@@ -1,4 +1,3 @@
-/* 2014, Chris Zimmerman */
 $(document).ready(function () {
     $('#favorites').hide().addClass('hidden');
     $('#home').addClass('visible');
